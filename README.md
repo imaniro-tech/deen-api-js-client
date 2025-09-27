@@ -26,8 +26,8 @@ async function getHadiths() {
 
     hadiths.forEach((hadith) => {
       console.log(`Book: ${hadith.book}`);
-      console.log(`Chapter: ${hadith.chapter}`);
-      console.log(`Text: ${hadith.text}`);
+      console.log(`Hadith Number: ${hadith.number}`);
+      console.log(`Arabic Text: ${hadith.hadith}`);
       console.log(`Translation: ${hadith.translation}`);
       console.log('---');
     });
