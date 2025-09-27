@@ -1,0 +1,56 @@
+{
+  "name": "deen-api-client",
+  "version": "1.0.0",
+  "description": "Node.js client for Deen API - Islamic resources API (Hadith, Quran, Duas)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "example": "node examples/hadith-example.js"
+  },
+  "keywords": [
+    "islamic",
+    "api",
+    "hadith",
+    "quran",
+    "dua",
+    "muslim",
+    "deen",
+    "islam"
+  ],
+  "author": "Imaniro Pvt Ltd <info@imaniro.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imaniro-tech/deen-api-js-client.git"
+  },
+  "homepage": "https://github.com/imaniro-tech/deen-api-js-client",
+  "bugs": {
+    "url": "https://github.com/imaniro-tech/deen-api-js-client/issues"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "jest": "^29.7.0",
+    "nock": "^13.5.6"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  }
+}
