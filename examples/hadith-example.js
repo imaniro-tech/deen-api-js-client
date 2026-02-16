@@ -4,7 +4,10 @@ async function hadithExample() {
   const client = new ImaniroDeenAPIClient('sk_12345');
 
   try {
-    const hadiths = await client.getHadiths('Sahih al-Bukhari', 3);
+    const hadiths = await client.getHadiths({
+      book: 'Sahih al-Bukhari',
+      narrator: 'Abu Hurairah (RA)',
+    });
 
     console.log('Hadiths from Sahih al-Bukhari:');
     hadiths.forEach((hadith, index) => {

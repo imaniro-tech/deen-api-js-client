@@ -13,6 +13,19 @@ class AuthenticationError extends DeenAPIError {
   }
 }
 
+class InsufficientBalanceError extends DeenAPIError {
+  constructor(message = 'Insufficient balance to process request') {
+    super(message, 402);
+    this.name = 'InsufficientBalanceError';
+  }
+}
+
+class ValidationError extends DeenAPIError {
+  constructor(message, statusCode = 400, details = null) {
+    super(message, statusCode, details);
+  }
+}
+
 class RateLimitError extends DeenAPIError {
   constructor(message = 'Rate limit exceeded') {
     super(message, 429);
@@ -36,6 +49,8 @@ class ServerError extends DeenAPIError {
 
 module.exports = {
   DeenAPIError,
+  InsufficientBalanceError,
+  ValidationError,
   AuthenticationError,
   RateLimitError,
   NotFoundError,

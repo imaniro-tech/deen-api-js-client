@@ -4,6 +4,8 @@ const { Hadith, APIResponse } = require('./models');
 const {
   DeenAPIError,
   AuthenticationError,
+  InsufficientBalanceError,
+  ValidationError,
   RateLimitError,
   NotFoundError,
   ServerError,
@@ -15,6 +17,8 @@ module.exports = {
   APIResponse,
   DeenAPIError,
   AuthenticationError,
+  InsufficientBalanceError,
+  ValidationError,
   RateLimitError,
   NotFoundError,
   ServerError,
