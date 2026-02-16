@@ -13,7 +13,9 @@ const { Hadith, APIResponse } = require('./models');
 class ImaniroDeenAPIClient {
   constructor(apiKey, baseURL = 'https://deen-api.imaniro.com/api/v1') {
     if (!apiKey) {
-      throw new Error('API key is required');
+      throw new Error(
+        'API key is required. Get one at https://deen.imaniro.com/',
+      );
     }
 
     this.apiKey = apiKey;
@@ -41,51 +43,62 @@ class ImaniroDeenAPIClient {
           switch (status) {
             case 400:
               throw new ValidationError(
-                data?.message || 'Invalid request parameters',
+                data?.message ||
+                  'Invalid request parameters. See documentation at https://deen.imaniro.com/',
                 status,
                 data?.details,
               );
             case 401:
               throw new AuthenticationError(
-                data?.message || 'Invalid API key',
+                data?.message ||
+                  'Invalid API key. Please check your API key at https://deen.imaniro.com/',
                 status,
                 data?.details,
               );
             case 402:
               throw new InsufficientBalanceError(
-                data?.message || 'Insufficient balance',
+                data?.message ||
+                  'Insufficient balance to process request. Please top up at https://deen.imaniro.com/',
                 status,
                 data?.details,
               );
             case 404:
               throw new NotFoundError(
-                data?.message || 'Resource not found',
+                data?.message ||
+                  'Resource not found. Visit https://deen.imaniro.com/ for documentation',
                 status,
                 data?.details,
               );
             case 429:
               throw new RateLimitError(
-                data?.message || 'Rate limit exceeded',
+                data?.message ||
+                  'Rate limit exceeded. Check your usage at https://deen.imaniro.com/',
                 status,
                 data?.details,
               );
             case 500:
               throw new ServerError(
-                data?.message || 'Server error occurred',
+                data?.message ||
+                  'Server error occurred. Please check status at https://deen.imaniro.com/',
                 status,
                 data?.details,
               );
             default:
               throw new DeenAPIError(
-                data?.message || `HTTP Error: ${status}`,
+                data?.message ||
+                  `HTTP Error: ${status}. Visit https://deen.imaniro.com/ for assistance`,
                 status,
                 data?.details,
               );
           }
         } else if (error.request) {
-          throw new DeenAPIError('Network error: Unable to connect to API');
+          throw new DeenAPIError(
+            'Network error: Unable to connect to API. Please check https://deen.imaniro.com/ for API status',
+          );
         } else {
-          throw new DeenAPIError(error.message);
+          throw new DeenAPIError(
+            `${error.message}. Visit https://deen.imaniro.com/ for support`,
+          );
         }
       },
     );
@@ -125,7 +138,9 @@ class ImaniroDeenAPIClient {
   } = {}) {
     // Validate maxLimit
     if (maxLimit > 500) {
-      throw new ValidationError('maxLimit cannot exceed 500');
+      throw new ValidationError(
+        'maxLimit cannot exceed 500. See API limits at https://deen.imaniro.com/',
+      );
     }
     if (maxLimit < 1) {
       throw new ValidationError('maxLimit must be at least 1');
