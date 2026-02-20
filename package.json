@@ -1,10 +1,11 @@
 {
   "name": "deen-api-client",
-  "version": "1.0.0",
-  "description": "Node.js client for Deen API - Islamic resources API (Hadith, Quran, Duas)",
+  "version": "1.1.0",
+  "description": "Node.js client for Deen API - Retrieve Hadith, Quran (coming soon), and Duas (coming soon) with powerful filtering",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rm -rf dist/ lib/ node_modules/",
     "build": "babel src --out-dir dist",
     "prepublishOnly": "npm run build",
     "test": "jest",
@@ -27,7 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/imaniro-tech/deen-api-js-client.git"
   },
-  "homepage": "https://github.com/imaniro-tech/deen-api-js-client",
+  "homepage": "https://deen.imaniro.com/documentation",
   "bugs": {
     "url": "https://github.com/imaniro-tech/deen-api-js-client/issues"
   },
